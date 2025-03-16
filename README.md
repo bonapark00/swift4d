@@ -9,9 +9,9 @@ Please follow the [3D-GS](https://github.com/graphdeco-inria/gaussian-splatting)
 
 ```bash
 git clone --recursive https://github.com/WuJH2001/swift4d.git
-cd Swift4d
+cd swift4d
 conda create -n swift4d python=3.8
-conda activate Swift4d
+conda activate swift4d
 
 pip install -r requirements.txt
 pip install  submodules/diff-gaussian-rasterization
