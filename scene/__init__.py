@@ -54,22 +54,9 @@ class Scene:
         if os.path.exists(os.path.join(args.source_path, "sparse")):
             scene_info = sceneLoadTypeCallbacks["Colmap"](args.source_path, args.images, args.eval, args.llffhold)
             dataset_type="colmap"
-        elif os.path.exists(os.path.join(args.source_path, "transforms_train.json")):
-            print("Found transforms_train.json file, assuming Blender data set!")
-            scene_info = sceneLoadTypeCallbacks["Blender"](args.source_path, args.white_background, args.eval, args.extension)
-            dataset_type="blender"
         elif os.path.exists(os.path.join(args.source_path, "poses_bounds.npy")):
             scene_info = sceneLoadTypeCallbacks["dynerf"](args.source_path, args.white_background, args.eval)
             dataset_type="dynerf"
-        elif os.path.exists(os.path.join(args.source_path,"dataset.json")):
-            scene_info = sceneLoadTypeCallbacks["nerfies"](args.source_path, False, args.eval)
-            dataset_type="nerfies"
-        elif os.path.exists(os.path.join(args.source_path,"train_meta.json")):
-            scene_info = sceneLoadTypeCallbacks["PanopticSports"](args.source_path)
-            dataset_type="PanopticSports"
-        elif os.path.exists(os.path.join(args.source_path,"points3D_multipleview.ply")):
-            scene_info = sceneLoadTypeCallbacks["MultipleView"](args.source_path)
-            dataset_type="MultipleView"
         else:
             assert False, "Could not recognize scene type!"
         self.maxtime = scene_info.maxtime
