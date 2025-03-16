@@ -161,7 +161,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
             "radii": radii,
             "depth":depth,
             "dynamic_map": dynamics_map,
-            "max_weight":max_weight_t
+            "max_weight_t":max_weight_t
             }
 
 
