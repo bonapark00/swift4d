@@ -131,7 +131,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
     # time3 = get_time()
     if  dyn_mask2 !=None:  # our test code , not important
         # Rasterize visible Gaussians to image, obtain their radii (on screen). 
-        rendered_image, radii, depth, dynamics_map, max_weight = rasterizer(
+        rendered_image, radii, depth, dynamics_map, max_weight_t = rasterizer(
             means3D = means3D_final[dyn_mask2],
             means2D = means2D[dyn_mask2],
             shs = shs_final[dyn_mask2],
@@ -144,7 +144,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
             )
     else:
         # Rasterize visible Gaussians to image, obtain their radii (on screen). 
-        rendered_image, radii, depth, dynamics_map, max_weight = rasterizer(
+        rendered_image, radii, depth, dynamics_map, max_weight_t = rasterizer(
             means3D = means3D_final,
             means2D = means2D,
             shs = shs_final,
@@ -155,18 +155,13 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
             dynamics = dynamics,
             cov3D_precomp = cov3D_precomp
         )
-    # time4 = get_time()
-    # print("rasterization:",time4-time3)
-    # breakpoint()
-    # Those Gaussians that were frustum culled or had a radius of 0 were not visible.
-    # They will be excluded from value updates used in the splitting criteria.
     return {"render": rendered_image,
             "viewspace_points": screenspace_points,
             "visibility_filter" : radii > 0,
             "radii": radii,
             "depth":depth,
             "dynamic_map": dynamics_map,
-            "max_weight":max_weight
+            "max_weight":max_weight_t
             }
 
 
