@@ -688,9 +688,6 @@ def readMultipleViewinfos(datadir,llffhold=8):
 
 sceneLoadTypeCallbacks = {
     "Colmap": readColmapSceneInfo,
-    "Blender" : readNerfSyntheticInfo,
     "dynerf" : readdynerfInfo,
-    "nerfies": readHyperDataInfos,  # NeRFies & HyperNeRF dataset proposed by [https://github.com/google/hypernerf/releases/tag/v0.1]
-    "PanopticSports" : readPanopticSportsinfos,
-    "MultipleView": readMultipleViewinfos
+
 }
