@@ -241,8 +241,8 @@ def scene_reconstruction(dataset, opt, hyper, pipe, testing_iterations, saving_i
 
         for viewpoint_cam in viewpoint_cams:
             render_pkg = render(viewpoint_cam, gaussians, pipe, background, stage=stage,cam_type=scene.dataset_type)
-            image, viewspace_point_tensor, visibility_filter, radii, max_weight = \
-                        render_pkg["render"], render_pkg["viewspace_points"], render_pkg["visibility_filter"], render_pkg["radii"],render_pkg["max_weight"]
+            image, viewspace_point_tensor, visibility_filter, radii, max_weight_t = \
+                        render_pkg["render"], render_pkg["viewspace_points"], render_pkg["visibility_filter"], render_pkg["radii"],render_pkg["max_weight_t"]
             images.append(image.unsqueeze(0))
 
             if scene.dataset_type!="PanopticSports":
@@ -250,7 +250,7 @@ def scene_reconstruction(dataset, opt, hyper, pipe, testing_iterations, saving_i
             else:
                 gt_image  = viewpoint_cam['image'].cuda()
             
-            last_max_weight_list.append(max_weight)
+            last_max_weight_list.append(max_weight_t)
             gt_images.append(gt_image.unsqueeze(0))
             radii_list.append(radii.unsqueeze(0))
             visibility_filter_list.append(visibility_filter.unsqueeze(0))
