@@ -8,10 +8,10 @@ Jiahao Wu , [Rui Peng](https://prstrive.github.io/) , Zhiyan Wang, Lu Xiao, </br
 Please follow the [3D-GS](https://github.com/graphdeco-inria/gaussian-splatting) to install the relative packages.
 
 ```bash
-git clone https://github.com/WuJH2001/Swift4d.git
+git clone https://github.com/WuJH2001/swift4d.git
 cd Swift4d
 git submodule update --init --recursive
-conda create -n Swift4d python=3.8 
+conda create -n swift4d python=3.8 
 conda activate Swift4d
 
 pip install -r requirements.txt
