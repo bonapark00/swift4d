@@ -67,7 +67,7 @@ python train.py -s data/dynerf/cut_roasted_beef --port 6017 --expname "dynerf/cu
 Run the following script to render the images.
 
 ```
-python render.py --model_path output/dynerf_final/cut_roasted_beef --skip_train --skip_video --iteration 13000 --configs  arguments/dynerf/cut_roasted_beef.py
+python render.py --model_path output/dynerf/cut_roasted_beef --skip_train --skip_video --iteration 13000 --configs  arguments/dynerf/cut_roasted_beef.py
 ```
 
 ## Evaluation
@@ -75,7 +75,7 @@ python render.py --model_path output/dynerf_final/cut_roasted_beef --skip_train 
 You can just run the following script to evaluate the model.
 
 ```
-python metrics.py --model_path "output/dynerf_final/coffee_martini_down2_4dgs/" 
+python metrics.py --model_path output/dynerf/coffee_martini/
 ```
 ## Trained Models
 
