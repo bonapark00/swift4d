@@ -36,10 +36,6 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 tonemap = lambda x : (np.log(np.clip(x, 0, 1) * 5000 + 1 ) / np.log(5000 + 1)).astype(np.float32)
 to8b = lambda x : (255*np.clip(x,0,1)).astype(np.uint8)
-# 展示LDR
-def show_image(image,idx):
-    show_image = Image.fromarray(to8b(image))
-    show_image.save(f'rgb_{idx}.png')
 
 
 
@@ -55,7 +51,7 @@ def readImages(renders_dir, gt_dir):
         image_names.append(fname)
     return renders, gts, image_names
 
-def evaluate_(test_path, gt_path):
+def evaluate_(test_path):
 
     test_path_list = [os.path.join(test_path, "test", f) for f in sorted(os.listdir(os.path.join(test_path, "test"))) if 'ours' in f]
     test_path = test_path_list[-1]
@@ -70,7 +66,7 @@ def evaluate_(test_path, gt_path):
 
 
     renders, gts, image_names = readImages(renders_dir, gt_dir)
-    csvfile = open(os.path.join(test_path, 'eval_ldr.csv'),"w") 
+    csvfile = open(os.path.join(test_path, 'eval.csv'),"w") 
     writer = csv.writer(csvfile)
 
     for idx in tqdm(range(len(renders)), desc="Metric evaluation progress"):
@@ -111,5 +107,5 @@ if __name__ == "__main__":
     Mlp = ModelParams(parser)
 
     args = parser.parse_args(sys.argv[1:])
-    evaluate_(args.model_path, args.source_path)
+    evaluate_(args.model_path)
 
