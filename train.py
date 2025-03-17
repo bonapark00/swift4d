@@ -43,26 +43,7 @@ try:
 except ImportError:
     TENSORBOARD_FOUND = False
 
-def show_image(image,name):
-    show_image = Image.fromarray(np.transpose(np.array(image.detach().clamp(0,1).cpu() * 255 ).astype(np.uint8), (1, 2, 0)))
-    show_image.save(f'test_images/mask/rgb_{name}.png')
 
-
-
-
-def draw_img(img, idx):
-    ldr = img.detach().cpu()
-    img_tan = ldr.reshape(-1)
-
-    plt.hist(np.array(img_tan), bins=50)
-    plt.xlabel('value' , fontsize=18)
-    plt.ylabel('number' , fontsize=18)
-    plt.xticks(fontsize=18)
-    plt.yticks(fontsize=18)
-    # plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.savefig(f"img_{idx}.png",format='png')
-    plt.close()
 
 
 
@@ -115,8 +96,8 @@ def train_dynamic(pipe ,opt, scene,  gaussians, tb_writer, args):
                 gaussians.dy_optimizer.step()
                 gaussians.dy_optimizer.zero_grad(set_to_none = True)
 
-    dyn_mask = ( gaussians.get_dynamic >  5 ).squeeze(1)  # 
-    image = render(viewpoint_cam, gaussians, pipe, background, dyn_mask2 = dyn_mask)["render"]
+    # dyn_mask = ( gaussians.get_dynamic >  7.0 ).squeeze(1)  # 
+    # image = render(viewpoint_cam, gaussians, pipe, background, dyn_mask2 = dyn_mask)["render"]
     # rgb_image = render_pkg["render"]
 
 def scene_reconstruction(dataset, opt, hyper, pipe, testing_iterations, saving_iterations, 
