@@ -35,10 +35,6 @@ class Scene:
         self.model_path = args.model_path
         self.loaded_iter = None
         self.gaussians = gaussians
-        self.criterion =  torch.nn.BCEWithLogitsLoss(pos_weight=torch.Tensor([1.0]).cuda())   #  正类的损失权重是负类的 1/10 倍
-        self.tpr = [[a, None, None] for a in np.linspace(0.0, 1.0, 11)]  # 啥东西
-        self.tprs = []
-        self.pos_ratios = []
 
         # load_iteration = 13000
         if load_iteration:
