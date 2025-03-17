@@ -100,7 +100,7 @@ class SpaceTimeHashingField(torch.nn.Module):
         torch.save(self.state_dict(),path)
         
 
-    def get_contracted_xyz(self, xyz):  # 远离中心的一些浮点可以不要
+    def get_contracted_xyz(self, xyz): 
         with torch.no_grad():
             contracted_xyz=(xyz-self.xyz_bound_min)/(self.xyz_bound_max-self.xyz_bound_min)
             return contracted_xyz
@@ -151,15 +151,6 @@ class SpaceTimeHashingField(torch.nn.Module):
         new_opacity = torch.zeros_like(opacity, device="cuda")
         new_shs = torch.zeros_like(shs,   device="cuda")
 
-
-        # # 刚性形变不需要 dopacity 和 dsh
-        # new_xyz[mask], new_rot[mask], new_scales[mask] = \
-        #      masked_d_xyz + xyz[mask], masked_d_rot + rotations[mask], masked_d_scales + scales[mask],  
-        
-        # new_xyz[~mask], new_rot[~mask], new_scales[~mask] = \
-        #     xyz[~mask], rotations[~mask], scales[~mask] 
-        
-        # new_opacity, new_shs = opacity , shs
 
 
         new_xyz[mask], new_rot[mask], new_scales[mask], new_opacity[mask], new_shs[mask] = \
