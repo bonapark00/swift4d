@@ -80,15 +80,13 @@ python metrics.py --model_path output/dynerf/coffee_martini/
 ## Trained Models
 
 You can find our dynerf models [here](https://1drv.ms/f/c/80737028a7921b70/EoI6KahH9KlKrZMvJ0eBGqgBSGiB-Ag0cVHpxXxb1AM_4A?e=dtkW2e).
-The VRU Basketball dataset we used in the paper can be found [here](https://github.com/WuJH2001/VRU-Basketball).
+The VRU Basketball dataset we used in the paper can be found [here](https://github.com/WuJH2001/VRU-Basketball). And you can also download our Basketball dataset from hugging face [here](https://huggingface.co/datasets/BestWJH/VRU_Basketball)
 
 
-
----
 
 ## Contributions
 
-**This project is still under development. Please feel free to raise issues or submit pull requests to contribute to our codebase. Thanks to [4DGS](https://github.com/hustvl/4DGaussians)**
+**This project is still under development. Please feel free to raise issues or submit pull requests to contribute to our codebase. Thanks to [4DGS](https://github.com/hustvl/4DGaussians)** 
 
 ---
 
