@@ -44,6 +44,7 @@ pip install  submodules/simple-knn
 |     ├── ...
 ```
 **For your Multi-view dynamic scenes:**
+
 You may need to follow [3DGSTream](https://github.com/SJoJoK/3DGStream)
 
 
