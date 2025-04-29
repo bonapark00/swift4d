@@ -54,7 +54,7 @@ def train_dynamic(pipe ,opt, scene,  gaussians, tb_writer, args):
     background = torch.tensor([0,0,0], dtype=torch.float32, device="cuda")
 
     viewpoint_stack = scene.getTrainCameras()
-    temp_list = get_stamp_list(viewpoint_stack,4)
+    temp_list = get_stamp_list(viewpoint_stack,0) # 
     viewpoint_stack = temp_list.copy()
     loss = torch.tensor(0.).cuda()
     progress_bar = tqdm(range(1, dy_iteration), desc="Dynamic Training progress")
