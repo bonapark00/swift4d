@@ -2,7 +2,7 @@
 Jiahao Wu , [Rui Peng](https://prstrive.github.io/) , Zhiyan Wang, Lu Xiao, </br> Luyang Tang, Kaiqiang Xiong, [Ronggang Wang](https://www.ece.pku.edu.cn/info/1046/2147.htm) <sup>✉</sup>
 ## ICLR 2025 [Paper](https://openreview.net/pdf?id=c1RhJVTPwT)
 
-# ![](./pictures/teaser.png)
+![](./pictures/teaser.png)
 ![](./pictures/pipeline.png)
 
 ## Environmental Setups
