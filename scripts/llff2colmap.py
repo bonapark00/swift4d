@@ -95,6 +95,9 @@ poses = poses_arr[:, :-2].reshape([-1, 3, 5])  # (N_cams, 3, 5)
 near_fars = poses_arr[:, -2:]
 videos = glob.glob(os.path.join(root_dir, "cam[0-9][0-9]"))
 videos = sorted(videos)
+print("poses_arr.shape:", poses_arr.shape)
+print("len(videos):", len(videos))
+
 assert len(videos) == poses_arr.shape[0]
 H, W, focal = poses[0, :, -1]
 focal = focal/2
@@ -105,7 +108,7 @@ videos = glob.glob(os.path.join(root_dir, "cam[0-9][0-9]"))
 videos = sorted(videos)
 image_paths = []
 for index, video_path in enumerate(videos):
-    image_path = os.path.join(video_path,"images","{:%04d}.png".format(0))
+    image_path = os.path.join(video_path,"images","{:04d}.png".format(0))
     image_paths.append(image_path)
 print(image_paths)
 goal_dir = os.path.join(root_dir,"image_colmap")
@@ -113,6 +116,9 @@ if not os.path.exists(goal_dir):
     os.makedirs(goal_dir)
 import shutil
 image_name_list =[]
+
+from PIL import Image
+
 for index, image in enumerate(image_paths):
     image_name = image.split("/")[-1].split('.')
     image_name[0] = "r_%03d" % index
@@ -121,7 +127,13 @@ for index, image in enumerate(image_paths):
     image_name = ".".join(image_name)
     image_name_list.append(image_name)
     goal_path = os.path.join(goal_dir,image_name)
-    shutil.copy(image,goal_path)
+    # shutil.copy(image,goal_path) ## bona commented
+    
+    ## ✅ 원본 복사 대신 다운스케일 후 저장
+    img = Image.open(image)
+    img = img.resize((img.width // 2, img.height // 2), Image.LANCZOS)
+    img.save(goal_path)
+
 
 print(poses)
 # breakpoint()

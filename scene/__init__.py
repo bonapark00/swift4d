@@ -64,7 +64,9 @@ class Scene:
         self.test_camera = FourDGSdataset(scene_info.test_cameras, args, dataset_type)
         print("Loading Video Cameras")
         self.video_camera = FourDGSdataset(scene_info.video_cameras, args, dataset_type)
-
+        
+        self.criterion = torch.nn.BCEWithLogitsLoss(pos_weight=torch.Tensor([1.0]).cuda())
+        
         # self.video_camera = cameraList_from_camInfos(scene_info.video_cameras,-1,args)
         xyz_max = scene_info.point_cloud.points.max(axis=0)
         xyz_min = scene_info.point_cloud.points.min(axis=0)
