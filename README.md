@@ -43,6 +43,8 @@ pip install  submodules/simple-knn
 │     ├── cut_roasted_beef
 |     ├── ...
 ```
+#! 이렇게 안돼있어가지고 script/my_move2_imagesFolder.py에서 images 폴더 만들어줌
+
 **For your Multi-view dynamic scenes:**
 You may need to follow [3DGSTream](https://github.com/SJoJoK/3DGStream)
 
@@ -53,13 +55,25 @@ You may need to follow [3DGSTream](https://github.com/SJoJoK/3DGStream)
 For training dynerf scenes such as `cut_roasted_beef`, run
 ```python
 # First, extract the frames of each video.
-python scripts/preprocess_dynerf.py --datadir data/dynerf/cut_roasted_beef
+python scripts/preprocess_dynerf.py --datadir /ssd_data1/users/jypark/data/n3d/video_data/cut_roasted_beef/ ## OK
+python scripts/preprocess_dynerf.py --datadir /ssd_data1/users/jypark/data/n3d/video_data/coffee_martini/ ## Ok
+python scripts/preprocess_dynerf.py --datadir /ssd_data1/users/jypark/data/n3d/video_data/cook_spinach/ ## ok
+
+
 # Second, generate point clouds from input data.
-bash colmap.sh data/dynerf/cut_roasted_beef llff
+bash colmap.sh /ssd_data1/users/jypark/data/n3d/video_data/cut_roasted_beef llff
+bash colmap.sh /ssd_data1/users/jypark/data/n3d/video_data/coffee_martini llff
+bash colmap.sh /ssd_data1/users/jypark/data/n3d/video_data/cook_spinach llff ## ok!!
+
+
 # Third, downsample the point clouds generated in the second step.
-python scripts/downsample_point.py data/dynerf/cut_roasted_beef/colmap/dense/workspace/fused.ply data/dynerf/cut_roasted_beef/points3D_downsample2.ply
+python scripts/downsample_point.py /ssd_data1/users/jypark/data/n3d/video_data/cut_roasted_beef/colmap/dense/workspace/fused.ply /ssd_data1/users/jypark/data/n3d/video_data/cut_roasted_beef/points3D_downsample2.ply
+python scripts/downsample_point.py /ssd_data1/users/jypark/data/n3d/video_data/cook_spinach/colmap/dense/workspace/fused.ply /ssd_data1/users/jypark/data/n3d/video_data/cook_spinach/points3D_downsample2.ply # ok
+
+
 # Finally, train.
 python train.py -s data/dynerf/cut_roasted_beef --port 6017 --expname "dynerf/cut_roasted_beef" --configs arguments/dynerf/cut_roasted_beef.py 
+python train.py -s /ssd_data1/users/jypark/data/n3d/video_data/cook_spinach --port 6017 --expname "dynerf/cook_spinach" --configs arguments/dynerf/cook_spinach.py 
 ```
 
 ## Rendering
@@ -76,6 +90,7 @@ You can just run the following script to evaluate the model.
 
 ```
 python metrics.py --model_path output/dynerf/coffee_martini/
+python metrics.py --model_path output/dynerf/cook_spinach/
 ```
 ## Trained Models
 
