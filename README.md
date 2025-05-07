@@ -1,7 +1,9 @@
 # Swift4D: Adaptive divide-and-conquer Gaussian Splatting for compact and efficient reconstruction of dynamic scene
 Jiahao Wu , [Rui Peng](https://prstrive.github.io/) , Zhiyan Wang, Lu Xiao, </br> Luyang Tang, Kaiqiang Xiong, [Ronggang Wang](https://www.ece.pku.edu.cn/info/1046/2147.htm) <sup>✉</sup>
-## ICLR 2025
+## ICLR 2025 [Paper](https://openreview.net/pdf?id=c1RhJVTPwT)
 
+![](./pictures/teaser.png)
+![](./pictures/pipeline.png)
 
 ## Environmental Setups
 
@@ -46,6 +48,7 @@ pip install  submodules/simple-knn
 #! 이렇게 안돼있어가지고 script/my_move2_imagesFolder.py에서 images 폴더 만들어줌
 
 **For your Multi-view dynamic scenes:**
+
 You may need to follow [3DGSTream](https://github.com/SJoJoK/3DGStream)
 
 
@@ -95,8 +98,10 @@ python metrics.py --model_path output/dynerf/cook_spinach/
 ## Trained Models
 
 You can find our dynerf models [here](https://1drv.ms/f/c/80737028a7921b70/EoI6KahH9KlKrZMvJ0eBGqgBSGiB-Ag0cVHpxXxb1AM_4A?e=dtkW2e).
-The VRU Basketball dataset we used in the paper can be found [here](https://github.com/WuJH2001/VRU-Basketball). You can also download our Basketball dataset from 🤗 Hugging Face [here](https://huggingface.co/datasets/BestWJH/VRU_Basketball). Feel free to use it for training your model or validating your method!
+The Virtual Reality Unit (VRU) Basketball dataset, which we used in the paper, is available  [here](https://github.com/WuJH2001/VRU-Basketball). It was created by the [AVS-VRU](https://www.avs.org.cn/index/list?catid=23) work unit.
+You can also download our **VRU Basketball dataset** from 🤗 Hugging Face [here](https://huggingface.co/datasets/BestWJH/VRU_Basketball). Feel free to use it for training your model or validating your method! 
 
+If you find our  VRU Basketball dataset or code helpful, we’d greatly appreciate it if you could give us a star and consider citing our work.
 
 
 ## Contributions
