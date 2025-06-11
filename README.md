@@ -85,6 +85,7 @@ Run the following script to render the images.
 
 ```
 python render.py --model_path output/dynerf/cut_roasted_beef --skip_train --skip_video --iteration 13000 --configs  arguments/dynerf/cut_roasted_beef.py
+python render.py --model_path output/dynerf/cook_spinach --skip_train --skip_video --iteration 13000 --configs  arguments/dynerf/cook_spinach.py # ok
 ```
 
 ## Evaluation
